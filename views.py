@@ -1,9 +1,8 @@
 from flask import Flask, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
-
 app = Flask(__name__)
-db = SQLALchemy(app)
+db = SQLAlchemy(app)
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
