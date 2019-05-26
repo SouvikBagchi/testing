@@ -1,4 +1,6 @@
 from flask import Flask, url_for, request
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 db = SQLALchemy(app)
