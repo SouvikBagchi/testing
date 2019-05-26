@@ -16,7 +16,7 @@ def hello_world():
 #        return redirect(url_for('recommend_joke'))
 
 
-@app.route('/firstjoke',['GET','POST'])
+@app.route('/firstjoke',methods = ['GET','POST'])
 def recommend_joke():
     
     #write code to get the first joke and compute the matrix
@@ -32,5 +32,3 @@ def recommend_joke():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
-    
-    
