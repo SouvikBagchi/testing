@@ -27,7 +27,7 @@ def recommend_joke():
     if request.method == 'GET':
         
     
-        return render_template('joke.html', joke)
+        return render_template('joke.html', joke= joke)
     
     else:
         return 'post hai'
