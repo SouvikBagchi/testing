@@ -32,7 +32,7 @@
         background-color: green;
         }
     </style>
-        <form method="POST" action="test">
+        <form method="POST" action="{{ url_for('recommend_joke') }}">
             <input class = "slider" type="range" min="-10" max="10" name="rating"
                    value = "0"/>
             
