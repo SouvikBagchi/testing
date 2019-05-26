@@ -30,7 +30,8 @@ def recommend_joke():
         return render_template('joke.html', joke= joke)
     
     else:
-        return 'post hai'
+        value = request.form["rating"]
+        return render_template('joke.html', joke= value)
     
 
 if __name__ == "__main__":
