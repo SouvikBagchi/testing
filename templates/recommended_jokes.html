@@ -21,11 +21,10 @@
         
     <div class="slidecontainer">
 
-  <form method="POST" action="test">
+  <form method="POST" action="{{ url_for('recommend_joke') }}">
             <input class = "slider" type="range" min="-10" max="10" name="rating"
                    value = "0"/>
             
-      
       <button class="button"  type="submit" value="submit" onclick="">Go ahead !</button>
     
         </form>
@@ -82,5 +81,4 @@
         cursor: pointer;
         }
     </style>
-    
 </body>
