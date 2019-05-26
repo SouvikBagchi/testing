@@ -1,4 +1,4 @@
-from flask import Flask, url_for, requests
+from flask import Flask, url_for, request
 
 app = Flask(__name__)
 db = SQLALchemy(app)
@@ -9,4 +9,3 @@ def hello_world():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
-
