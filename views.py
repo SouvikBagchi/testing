@@ -12,8 +12,6 @@ def hello_world():
     if request.method == 'GET':
         
         return render_template('home.html')
-#    else :
-#        return redirect(url_for('recommend_joke'))
 
 
 @app.route('/firstjoke',methods = ['GET','POST'])
@@ -31,7 +29,7 @@ def recommend_joke():
     
     else:
         value = request.form["rating"]
-        return render_template('joke.html', joke= value)
+        return render_template('recommended_jokes.html', joke= value)
     
 
 if __name__ == "__main__":
