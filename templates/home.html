@@ -33,6 +33,6 @@
         background-color: green;
         }
     </style>
-        <button type = "button" class="button"  onclick="{{ url_for('recommend_joke') }}">Go ahead !</button>
+        <form method = "GET" action="{{ url_for('recommend_joke') }}"><button type = "button" class="button" >Go ahead !</button></form>
     
 </body>
