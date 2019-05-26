@@ -29,6 +29,9 @@ def recommend_joke():
     
         return render_template('joke.html', joke)
     
+    else:
+        return 'post hai'
+    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
