@@ -5,12 +5,11 @@
 </head>
 <body>
     
-    <h1>Welcome to my Joke Recommender</h1>
+    <h1>Joke for you</h1>
     <h2>
-        This is a project for avc<br>
-        I have created a joke recommender which learns your preference starting with the first joke you rate.
-        The first joke is randomly selected, the subsequent jokes are a result of your ratings.
-        Happy laughing !
+        This will hold the joke - 
+        
+        {{ joke }}
         
         <br>
         <br>
@@ -33,6 +32,6 @@
         background-color: green;
         }
     </style>
-        <button class="button"  onclick="{{ url_for('recommend_joke') }}">Go ahead !</button>
+        <button class="button"  onclick="">Go ahead !</button>
     
 </body>
