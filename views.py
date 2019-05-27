@@ -40,26 +40,33 @@ def recommend_joke():
         #This is the value which the user gave to the previous joke which is represented by joke_num
         value = request.form["rating"]
         #get the joke_num
-        joke_num = session['joke_num']
+        last_joke = session['joke_num']
         session.pop('joke_num',None)
         
         #now that we have the joke number we will create the svd with this information
-        
-        #fetch the data
-        #create the matrix
-        #append the user_pref
-        #calculate svd
         
         #check if session is set
         if 'user_pref' in session:
 
             curr_user_pref = session['user_pref']
             session.pop('user_pref',None)
-            last_joke = session['joke_num']
-            session.pop('joke_num',None)
             
+            curr_user_pref[last_joke] = value
             
+            #fetch the data
+            #create the matrix
+            #append the user_pref
+            #calculate svd
+            
+            new_joke = 'new joke'
+            new_joke_number = random.randint(1,90)#needs to be the one that is being recommend_joke
+            
+            #set the sessions
+            session['joke_num'] = new_joke_number
+            session['user_pref'] = user_pref
             print('curr user pref ',curr_user_pref)
+            
+            
             return render_template('recommended_jokes.html', joke= "recommended joke"+str(curr_user_pref))
 
         else :
