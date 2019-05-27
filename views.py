@@ -33,7 +33,7 @@ def recommend_joke():
         #insert code to get the joke
 
         session['joke_num'] = random.randint(1,90) #this is default but you will need to get the joke number you are displaying
-        return render_template('joke.html', joke= joke+str(user_pref))
+        return render_template('joke.html', joke= joke)
     
     else:
 
@@ -49,8 +49,6 @@ def recommend_joke():
         #create the matrix
         #append the user_pref
         #calculate svd
-        
-        
         
         #check if session is set
         if 'user_pref' in session:
