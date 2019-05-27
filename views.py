@@ -14,10 +14,10 @@ def hello_world():
         return render_template('home.html')
 
 
-@app.route('/firstjoke',methods = ['GET','POST'])
+@app.route('/jokes',methods = ['GET','POST'])
 def recommend_joke():
     '''
-    session - user_pref
+    session - user_pref, joke_num(0-19)
     '''
     #write code to get the first joke and compute the matrix
     
@@ -29,13 +29,14 @@ def recommend_joke():
         #we will randomly select one of the highest rated joke and display it
         #insert code to get the joke
 
-    
+        session['joke_num'] = 0 #this is default but you will need to get the joke number you are displaying
         return render_template('joke.html', joke= joke)
     
     else:
 
+        #
+        
         #check if session is set
-
         if 'user_pref' in session:
 
             pass
