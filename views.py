@@ -1,4 +1,4 @@
-from flask import Flask, url_for, request, render_template
+from flask import Flask, url_for, request, render_template, session
 from flask_sqlalchemy import SQLAlchemy
 import numpy as np
 import pandas as pd
@@ -16,7 +16,9 @@ def hello_world():
 
 @app.route('/firstjoke',methods = ['GET','POST'])
 def recommend_joke():
-    
+    '''
+    session - user_pref
+    '''
     #write code to get the first joke and compute the matrix
     
     
@@ -24,12 +26,29 @@ def recommend_joke():
     
     if request.method == 'GET':
         
+        #we will randomly select one of the highest rated joke and display it
+        #insert code to get the joke
+
     
         return render_template('joke.html', joke= joke)
     
     else:
-        value = request.form["rating"]
-        return render_template('recommended_jokes.html', joke= value)
+
+        #check if session is set
+
+        if 'user_pref' in session:
+
+            pass
+
+        else :
+
+            value = request.form["rating"]
+
+            #create a list
+            #calculate svd
+
+            #store in session
+            return render_template('recommended_jokes.html', joke= "recommended joke")
     
 
 if __name__ == "__main__":
