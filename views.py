@@ -39,11 +39,12 @@ def recommend_joke():
 
         #This is the value which the user gave to the previous joke which is represented by joke_num
         value = request.form["rating"]
-        seesion.pop('rating',None)
+        session.pop('rating',None)
         #get the joke_num
         last_joke = session['joke_num']
         session.pop('joke_num',None)
-        
+    
+    
         #now that we have the joke number we will create the svd with this information
         
         #check if session is set
