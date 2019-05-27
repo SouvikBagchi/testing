@@ -4,7 +4,9 @@ import numpy as np
 import pandas as pd
 
 app = Flask(__name__)
+app.secret_key = 'verysecretsecretkey'
 db = SQLAlchemy(app)
+
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
