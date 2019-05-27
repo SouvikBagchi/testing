@@ -39,6 +39,7 @@ def recommend_joke():
 
         #This is the value which the user gave to the previous joke which is represented by joke_num
         value = request.form["rating"]
+        seesion.pop('rating',None)
         #get the joke_num
         last_joke = session['joke_num']
         session.pop('joke_num',None)
@@ -63,7 +64,7 @@ def recommend_joke():
             
             #set the sessions
             session['joke_num'] = new_joke_number
-            session['user_pref'] = user_pref
+            session['user_pref'] = curr_user_pref
             print('curr user pref ',curr_user_pref)
             
             
@@ -73,22 +74,24 @@ def recommend_joke():
             
             #for that we will set a user_pref
             user_pref = [0]*100 #create a list with the lenght of the number of jokes
-            user_pref[joke_num] = value
+            user_pref[last_joke] = value
+            session['user_pref'] = user_pref
             
             #fetch the data
             #create the matrix
             #append the user_pref
-            #calculate svd
+            #calculate svd using the user_pref
+            #that is how you get the 
             
             new_joke = 'new joke'
             new_joke_number = random.randint(1,90)#needs to be the one that is being recommend_joke
             
             #set the sessions
             session['joke_num'] = new_joke_number
-            session['user_pref'] = user_pref #[0,0,0,0,0,0,0,5,00,0,0,0,]
+             #[0,0,0,0,0,0,0,5,00,0,0,0,]
             
             #store in session
-            return render_template('recommended_jokes.html', joke= "recommended joke"+str(user_pref))
+            return render_template('recommended_jokes.html', joke= "new - joke -"+str(user_pref))
     
 
 if __name__ == "__main__":
