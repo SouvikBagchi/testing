@@ -50,7 +50,8 @@ def recommend_joke():
         #check if session is set
         if 'user_pref' in session:
 
-            curr_user_pref = session['user_pref']
+            curr_user_pref = list(session['user_pref'])
+            
             session.pop('user_pref',None)
             
             curr_user_pref[last_joke] = value
@@ -66,7 +67,7 @@ def recommend_joke():
             #set the sessions
             session['joke_num'] = new_joke_number
             session['user_pref'] = curr_user_pref
-            print('curr user pref ',curr_user_pref)
+            print(curr_user_pref)
             
             
             return render_template('recommended_jokes.html', joke= "recommended joke"+str(curr_user_pref))
