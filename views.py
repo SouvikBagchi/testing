@@ -64,9 +64,8 @@ def recommend_joke():
 
         else :
             
-            
             #for that we will set a user_pref
-            user_pref = []*100 #create a list with the lenght of the number of jokes
+            user_pref = [0]*100 #create a list with the lenght of the number of jokes
             user_pref[joke_num] = value
             
             #fetch the data
