@@ -7,10 +7,13 @@ import pymysql
 from sqlalchemy.orm import sessionmaker
 from settings import SQLALCHEMY_DATABASE_URI
 import models
+from models import Test
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
+
+
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
@@ -113,6 +116,7 @@ def recommend_joke():
             #store in session
             return render_template('recommended_jokes.html', joke= "new - joke -"+str(user_pref))
     
+db.create_all()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
