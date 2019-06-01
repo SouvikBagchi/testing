@@ -97,7 +97,6 @@ def hello_world():
         boto.download_jokes()
 
 
-
     #Your system now has the files - rating.csv and jokes.csv in them
 
     ##
@@ -124,7 +123,7 @@ def recommend_joke():
     #create an object of recommender
     reco = Recommender(data_final, data_jokes)
     
-    joke = reco.get_most_popular()
+    joke, joke_num = reco.get_most_popular()
 
     
     if request.method == 'GET':
@@ -132,7 +131,7 @@ def recommend_joke():
         #we will randomly select one of the highest rated joke and display it
         #insert code to get the joke
 
-        session['joke_num'] = random.randint(1,90) #this is default but you will need to get the joke number you are displaying
+        session['joke_num'] = joke_num #this is default but you will need to get the joke number you are displaying
         return render_template('joke.html', joke= joke)
     
     else:
@@ -140,6 +139,7 @@ def recommend_joke():
         #This is the value which the user gave to the previous joke which is represented by joke_num
         value = request.form["rating"]
         session.pop('rating',None)
+        
         #get the joke_num
         last_joke = session['joke_num']
         session.pop('joke_num',None)

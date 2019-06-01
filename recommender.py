@@ -26,4 +26,4 @@ class Recommender:
 	    top_joke_val = top_joke['JokeID'].values[0]
 	    top_joke_desc = self.data_jokes[self.data_jokes['JokeID'] == top_joke_val].values[0][1]
 
-	    return top_joke_desc
+	    return top_joke_desc, top_joke_val
