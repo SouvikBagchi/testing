@@ -9,12 +9,8 @@ from test import Com
 from settings import SQLALCHEMY_DATABASE_URI
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer
-import boto3
 
-#this is for getting data from my s3 
-import boto3
-s3_resource = boto3.resource('s3')
-
+from bototest import Boto
 
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
@@ -75,6 +71,9 @@ db.create_all()
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     
+    boto = Boto()
+    boto.download_rating()
+    boto.download_jokes()
     #query the db to check if data is present 
     #if present then don't do anything
     #else get data from s3 boto to put into rds
