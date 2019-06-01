@@ -64,7 +64,8 @@ class Recommender:
 
 		return preds_df
 
-	def recommend_joke(self,preds_df,curr_joke,already_rated):
+
+	def recommend_joke(self,preds_df,already_rated):
 		#already rated is a list which shows which all jokes he has rated
 		#all the jokes which aren't rated will have 0s in them
 
