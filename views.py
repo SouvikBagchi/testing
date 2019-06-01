@@ -23,10 +23,11 @@ class Test(db.Model):
     """Create a data model for the database to be set up for capturing user input
 
     """
+    
     __tablename__ = 'Test'
 
-    id = Column(Integer, primary_key=True)
-    joke = Column(Integer, unique=False)
+    id = db.Column(Integer, primary_key=True)
+    joke = db.Column(Integer, unique=False)
     
     def __repr__(self):
         userrating_repr = "<UserRating(id='%i', user_id='%i', joke_id='%i', rating = '%i')>"
