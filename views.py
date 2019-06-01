@@ -125,7 +125,8 @@ def recommend_joke():
     
     res = reco.get_most_popular()
     joke = res[0]
-    joke_nunm = res[1]
+    joke_num = res[1]
+    
 
     
     if request.method == 'GET':
