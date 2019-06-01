@@ -62,18 +62,7 @@ class User(db.Model):
         return '<User %r>' % self.username
 
     
-class Testing(db.Model):
 
-    __tablename__ = 'jokedesc'
-
-    joke_id = Column(Integer, primary_key=True)
-    joke = Column(String(1000), unique=False, nullable=False)
-
-
-    def __repr__(self):
-        jokedesc_repr = "<JokeDesc(joke_id='%i', joke='%s')>"
-        return jokedesc_repr % (self.joke_id, self.joke)
-####
 
 db.create_all()
 
