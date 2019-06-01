@@ -88,6 +88,7 @@ def hello_world():
     #if not download
     try :
 
+        print('here')
         exists_ratings = os.path.isfile('ratings.csv')
         exists_jokes = os.path.isfile('jokes.csv')
 
