@@ -130,6 +130,8 @@ def recommend_joke():
 
     
     if request.method == 'GET':
+
+        print("GET METHOD")
         
         #we will randomly select one of the highest rated joke and display it
         #insert code to get the joke
@@ -153,6 +155,7 @@ def recommend_joke():
         #check if session is set
         if 'user_pref' in session:
 
+            print("POST METHOD - user pref pres")
             curr_user_pref = list(session['user_pref'])
             
             session.pop('user_pref',None)
@@ -186,6 +189,8 @@ def recommend_joke():
             return render_template('recommended_jokes.html', joke= "recommended joke"+str(curr_user_pref))
 
         else :
+
+            print("POST METHOD - no user pref")
             
             #first we will get the interaction matrix
             interaction_df = reco.get_interaction()
