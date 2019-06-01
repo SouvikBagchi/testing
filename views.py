@@ -11,6 +11,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer
 from recommender import Recommender
 from bototest import Boto
+import os
 
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
@@ -82,9 +83,21 @@ def hello_world():
 
 
     #For direct calculation from s3
-    boto = Boto()
-    boto.download_rating()
-    boto.download_jokes()
+
+    #check if file is already present -
+    #if not download
+    exists_ratings = os.path.isfile('ratings.csv')
+    exists_jokes = os.path.isfile('jokes.csv')
+
+    if exists_ratings and exists_jokes :
+
+        print('Files are present')
+
+    else:
+        
+        boto = Boto()
+        boto.download_rating()
+        boto.download_jokes()
 
 
     #Your system now has the files - rating.csv and jokes.csv in them
