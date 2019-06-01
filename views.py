@@ -70,21 +70,22 @@ db.create_all()
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     
-    # #add to db and print
-    a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
-    db.session.add(a)
-    db.session.flush()
-    db.session.commit()
-
-    #Check if the data is already in the RDS
-    #if not then get it from S3 and put it into the RDS
-
     data = User.query.all()
     # db.session.query()
     if data:
         print('data is present')
     else:
         print('data not present')
+        # #add to db and print
+        a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
+        db.session.add(a)
+        db.session.flush()
+        db.session.commit()
+
+    #Check if the data is already in the RDS
+    #if not then get it from S3 and put it into the RDS
+
+    
     if request.method == 'GET':
         
         return render_template('home.html')
