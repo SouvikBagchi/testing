@@ -51,7 +51,8 @@ class Recommender:
 	def get_svd(self,new_df):
 
 		new_matrix = new_df.as_matrix()
-
+		print("NEW MATRIX")
+		print(type(new_matrix))
 		#get the mean score of users
 		# mean_score = np.mean(new_matrix,axis = 1)
 		# new_matrix_dm = new_matrix - mean_score.reshape(-1,1)
