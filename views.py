@@ -166,7 +166,7 @@ def recommend_joke():
         session.pop('prev_joke',None)
 
         #RDS ADD JOKE FOR FUTURE ANALYSIS
-        joke_add = Joke(joke = prev_joke,rating = value)
+        joke_add = Jokes(joke = prev_joke,rating = value)
 
         db.session.add(joke_add)
         db.session.commit()
