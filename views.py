@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
 
-    test = models.UserRating(1,2,3,4)
+    test = models.Test(1,2,3,4)
     #add to db and print
     db.session.insert(test)
     db.session.commit()
@@ -23,10 +23,6 @@ def hello_world():
 
     # db.session.query()
 
-
-
-
-    
     if request.method == 'GET':
         
         return render_template('home.html')
