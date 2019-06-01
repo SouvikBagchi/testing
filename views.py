@@ -17,7 +17,7 @@ db = SQLAlchemy(app)
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
-    from models import Test
+    import models
     test = models.Test(joke = 5)
     #add to db and print
     db.session.add(test)
