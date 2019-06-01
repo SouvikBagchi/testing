@@ -6,7 +6,9 @@ import random
 import pymysql
 from sqlalchemy.orm import sessionmaker
 from settings import SQLALCHEMY_DATABASE_URI
-from models import models 
+from models.models import models 
+
+
 
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
