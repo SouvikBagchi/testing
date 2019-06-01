@@ -197,8 +197,10 @@ def recommend_joke():
 
             #for that we will set a user_pref
             user_pref = [0]*interaction_df.shape[1] #create a list with the length of the number of jokes
+
             user_pref[last_joke] = value
-            session['user_pref'] = user_pref
+            print(user_pref)
+            
             
             #append the user_pref
             new_df = reco.append_new_user(interaction_df, user_pref)
@@ -220,6 +222,7 @@ def recommend_joke():
             
             #set the sessions
             session['joke_num'] = new_joke_number
+            session['user_pref'] = user_pref
 
             return render_template('recommended_jokes.html', joke= new_joke+" "+str(user_pref))
 
