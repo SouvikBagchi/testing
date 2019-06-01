@@ -34,4 +34,7 @@ class UserRating(db.Model):
 #         jokedesc_repr = "<JokeDesc(joke_id='%i', joke='%s')>"
 #         return jokedesc_repr % (self.joke_id, self.joke)
 	
-# db.create_all()
+db.create_all()
+
+
+
