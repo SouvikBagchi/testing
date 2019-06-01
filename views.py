@@ -15,11 +15,15 @@ db = SQLAlchemy(app)
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
 
-    test = models.Test(1,2,3,4)
+    test = models.Test(joke = 5)
     #add to db and print
-    db.session.insert(test)
-    db.session.commit()
-    db.session.close()
+    db.session.add(test)
+    db.session.flush()
+
+    if test.id :
+        db.session.commit()
+        db.session.close()
+        print('Comiited')
 
     # db.session.query()
 

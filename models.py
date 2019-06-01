@@ -10,15 +10,10 @@ class Test(db.Model):
     __tablename__ = 'Test'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, unique=False)
-    joke_id = Column(Integer, unique=False)
-    rating = Column(Integer, unique=False)
+    joke = Column(Integer, unique=False)
+    
 
-    def __init__(self,id, user_id, joke_id, rating):
-    	self.id = id
-    	self.user_id = user_id
-    	self.joke_id = joke_id
-    	self.rating = rating
+    
     def __repr__(self):
         userrating_repr = "<UserRating(id='%i', user_id='%i', joke_id='%i', rating = '%i')>"
         return userrating_repr % (self.id, self.user_id, self.joke_id, self.rating)
