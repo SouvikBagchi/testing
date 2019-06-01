@@ -4,11 +4,11 @@ import numpy as np
 import pandas as pd
 import random
 from sqlalchemy.orm import sessionmaker
+from settings import SQLALCHEMY_DATABASE_URI
 # from models import UserRating
-
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@{endpoint}/{db instance name}'
+application.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
 
