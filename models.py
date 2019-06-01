@@ -12,8 +12,6 @@ class Test(db.Model):
     id = Column(Integer, primary_key=True)
     joke = Column(Integer, unique=False)
     
-
-    
     def __repr__(self):
         userrating_repr = "<UserRating(id='%i', user_id='%i', joke_id='%i', rating = '%i')>"
         return userrating_repr % (self.id, self.user_id, self.joke_id, self.rating)
