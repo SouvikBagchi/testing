@@ -2,13 +2,12 @@ from views import db, app
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer
 
-class UserRating(db.Model):
+class Test(db.Model):
 
     """Create a data model for the database to be set up for capturing user input
 
     """
-
-    __tablename__ = 'userrating'
+    __tablename__ = 'Test'
 
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, unique=False)
