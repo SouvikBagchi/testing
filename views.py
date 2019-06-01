@@ -190,7 +190,7 @@ def recommend_joke():
             session['joke_num'] = joke_num
             session['user_pref'] = curr_user_pref
             
-            return render_template('recommended_jokes.html', joke= "recommended joke"+str(curr_user_pref))
+            return render_template('recommended_jokes.html', joke= joke)
 
         else :
 
@@ -226,9 +226,10 @@ def recommend_joke():
             session['joke_num'] = new_joke_number
             session['user_pref'] = user_pref
 
-            return render_template('recommended_jokes.html', joke= new_joke+" "+str(user_pref))
+            return render_template('recommended_jokes.html', joke= new_joke)
 
 #################### FUNCTION FOR ADDING DATA TO RDS
+
 
 def add_data():
 
