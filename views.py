@@ -67,18 +67,19 @@ def hello_world():
     #query the db to check if data is present 
     #if present then don't do anything
     #else get data from s3 boto to put into rds
-    data = User.query.all()
+    # data = User.query.all()
     # db.session.query()
-    if data:
-        print('data is present')
-    else:
-        print('data not present')
+    # if data:
+    #     print('data is present')
+    # else:
+    #     print('data not present')
         
-        # #add to db and print
-        a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
-        db.session.add(a)
-        db.session.flush()
-        db.session.commit()
+    #     # #add to db and print
+    #     a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
+    #     db.session.add(a)
+    #     db.session.flush()
+    #     db.session.commit()
+
 
     #For direct calculation from s3
     boto = Boto()
