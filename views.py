@@ -6,6 +6,7 @@ import random
 import pymysql
 from sqlalchemy.orm import sessionmaker
 import models 
+from models import Test
 from settings import SQLALCHEMY_DATABASE_URI
 
 
