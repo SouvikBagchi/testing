@@ -72,7 +72,7 @@ def hello_world():
     
     # #add to db and print
     a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
-    db.session.add(admin)
+    db.session.add(a)
     db.session.flush()
     db.session.commit()
 
