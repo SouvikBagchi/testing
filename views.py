@@ -86,18 +86,16 @@ def hello_world():
 
     #check if file is already present -
     #if not download
-    exists_ratings = os.path.isfile('ratings.csv')
-    exists_jokes = os.path.isfile('jokes.csv')
+    try :
 
-    if exists_ratings and exists_jokes :
+        exists_ratings = os.path.isfile('ratings.csv')
+        exists_jokes = os.path.isfile('jokes.csv')
 
-        print('Files are present')
-
-    else:
-        
+    except:
         boto = Boto()
         boto.download_rating()
         boto.download_jokes()
+
 
 
     #Your system now has the files - rating.csv and jokes.csv in them
