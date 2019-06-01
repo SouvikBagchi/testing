@@ -53,13 +53,12 @@ class Recommender:
 		new_matrix = new_df.as_matrix()
 
 		#get the mean score of users
-		mean_score = np.mean(new_matrix,axis = 1)
-		new_matrix_dm = new_matrix - mean_score.reshape(-1,1)
-
+		# mean_score = np.mean(new_matrix,axis = 1)
+		# new_matrix_dm = new_matrix - mean_score.reshape(-1,1)
 		#decompose interaction matrix
 		U, sigma, Vt = svds(new_matrix_dm, k = 5)
 		sigma = np.diag(sigma)
-		all_user_predicted_ratings = np.dot(np.dot(U, sigma), Vt) + mean_score.reshape(-1, 1)
+		all_user_predicted_ratings = np.dot(np.dot(U, sigma), Vt) #+ mean_score.reshape(-1, 1)
 		preds_df = pd.DataFrame(all_user_predicted_ratings, columns = new_df.columns)
 
 		return preds_df
