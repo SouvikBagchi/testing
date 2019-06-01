@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import random
 from sqlalchemy.orm import sessionmaker
-from models import UserRating
+# from models import UserRating
 
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
