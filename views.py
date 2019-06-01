@@ -86,15 +86,12 @@ def hello_world():
 
     #check if file is already present -
     #if not download
-    try :
-
-
-        exists_ratings = os.path.isfile('ratings.csv')
-        exists_jokes = os.path.isfile('jokes.csv')
-
-    except:
-        print('here')
-        
+    try: 
+        fr = open('ratings.csv', 'r') 
+        fj = open('jokes.csv','r')
+    except FileNotFoundError: 
+    
+        print('herr')
         boto = Boto()
         boto.download_rating()
         boto.download_jokes()
