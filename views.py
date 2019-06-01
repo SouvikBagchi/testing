@@ -36,9 +36,12 @@ class Test(db.Model):
 db.create_all()
 
 
+
+
+
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
-    test = Test(joke = 5)
+    test = Test( 5)
     #add to db and print
     db.session.add(test)
     db.session.flush()
