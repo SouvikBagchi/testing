@@ -15,11 +15,9 @@ db = SQLAlchemy(app)
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
 
-    test = models.UserRating(1,3,6,5)
+    test = models.UserRating(1,2,3,4)
     #add to db and print
-    
-    db.session.add(test)
-    
+    db.session.insert(test)
     db.session.commit()
     db.session.close()
 
