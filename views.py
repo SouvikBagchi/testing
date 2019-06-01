@@ -71,9 +71,8 @@ db.create_all()
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     
-    boto = Boto()
-    boto.download_rating()
-    boto.download_jokes()
+
+
     #query the db to check if data is present 
     #if present then don't do anything
     #else get data from s3 boto to put into rds
@@ -83,6 +82,9 @@ def hello_world():
         print('data is present')
     else:
         print('data not present')
+        boto = Boto()
+        boto.download_rating()
+        boto.download_jokes()
         # #add to db and print
         a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
         db.session.add(a)
