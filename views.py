@@ -4,8 +4,6 @@ import numpy as np
 import pandas as pd
 import random
 from sqlalchemy.orm import sessionmaker
-
-
 from models import UserRating
 
 app = Flask(__name__)
