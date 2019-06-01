@@ -161,7 +161,7 @@ def recommend_joke():
             
             session.pop('user_pref',None)
             
-            curr_user_pref[last_joke] = value
+            curr_user_pref[last_joke] = int(value)
 
 
             
@@ -201,10 +201,8 @@ def recommend_joke():
             #for that we will set a user_pref
             user_pref = [0]*interaction_df.shape[1] #create a list with the length of the number of jokes
 
-            user_pref[last_joke] = value
-            print(user_pref)
-            for i in user_pref:
-                print(type(i))
+            user_pref[last_joke] = int(value)
+            
             
             #append the user_pref
             new_df = reco.append_new_user(interaction_df, user_pref)
