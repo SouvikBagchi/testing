@@ -167,18 +167,16 @@ def recommend_joke():
             #first we will get the interaction matrix
             interaction_df = reco.get_interaction()
             #append the user_pref
-            new_df = reco.append_new_user(interaction_df, user_pref)
+            new_df = reco.append_new_user(interaction_df, curr_user_pref)
 
             #calculate svd using the user_pref
             preds_df = reco.get_svd(new_df)
 
             #get the prediction
 
-            recommended_res = reco.recommend_joke(preds_df,user_pref)
+            recommended_res = reco.recommend_joke(preds_df,curr_user_pref)
             joke = recommended_res[0]
             joke_num= recommended_res[1]
-
-
 
 
             #set the sessions
