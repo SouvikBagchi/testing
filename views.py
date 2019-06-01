@@ -163,8 +163,7 @@ def recommend_joke():
             
             curr_user_pref[last_joke] = value
 
-            for i in curr_user_pref:
-                print(type(i))
+
             
             #fetch the data
             #create the matrix
@@ -204,6 +203,8 @@ def recommend_joke():
 
             user_pref[last_joke] = value
             print(user_pref)
+            for i in curr_user_pref:
+                print(type())
             
             
             #append the user_pref
