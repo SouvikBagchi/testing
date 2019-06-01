@@ -18,21 +18,41 @@ db = SQLAlchemy(app)
 
 
 
-class Test(db.Model):
+class UserRating(db.Model):
 
     """Create a data model for the database to be set up for capturing user input
 
     """
 
-    __tablename__ = 'Test'
+    __tablename__ = 'userrating'
 
-    id = db.Column(Integer, primary_key=True)
-    joke = db.Column(Integer, unique=False)
-    
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, unique=False)
+    joke_id = Column(Integer, unique=False)
+    rating = Column(Integer, unique=False)
+
     def __repr__(self):
         userrating_repr = "<UserRating(id='%i', user_id='%i', joke_id='%i', rating = '%i')>"
         return userrating_repr % (self.id, self.user_id, self.joke_id, self.rating)
 
+
+class JokeDesc(db.Model):
+
+    """Create a data model for the table JokeDesc
+
+    """
+
+    __tablename__ = 'jokedesc'
+
+    joke_id = Column(Integer, primary_key=True)
+    joke = Column(String(1000), unique=False, nullable=False)
+
+
+    def __repr__(self):
+        jokedesc_repr = "<JokeDesc(joke_id='%i', joke='%s')>"
+        return jokedesc_repr % (self.joke_id, self.joke)
+
+## Test Tables
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -41,21 +61,39 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+    
+class Testing(db.Model):
+
+    __tablename__ = 'jokedesc'
+
+    joke_id = Column(Integer, primary_key=True)
+    joke = Column(String(1000), unique=False, nullable=False)
+
+
+    def __repr__(self):
+        jokedesc_repr = "<JokeDesc(joke_id='%i', joke='%s')>"
+        return jokedesc_repr % (self.joke_id, self.joke)
+####
 
 db.create_all()
 
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
-    # test = Test(5,  8,  38)
-    admin = User(username='admin', email='admin@example.com')
-    #add to db and print
-    db.session.add(admin)
-    db.session.flush()
-    db.session.commit()
+    
+    # #add to db and print
+    # db.session.add(admin)
+    # db.session.flush()
+    # db.session.commit()
 
+    #Check if the data is already in the RDS
+    #if not then get it from S3 and put it into the RDS
+    data = User.query.all()
     # db.session.query()
-
+    if data:
+        print('data is present')
+    else:
+        print('data not present')
     if request.method == 'GET':
         
         return render_template('home.html')
