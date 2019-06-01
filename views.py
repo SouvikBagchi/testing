@@ -7,6 +7,8 @@ import pymysql
 from sqlalchemy.orm import sessionmaker
 from test import Com
 from settings import SQLALCHEMY_DATABASE_URI
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String, Integer
 
 
 app = Flask(__name__)
