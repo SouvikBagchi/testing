@@ -6,18 +6,17 @@ import random
 import pymysql
 from sqlalchemy.orm import sessionmaker
 from settings import SQLALCHEMY_DATABASE_URI
-import models.models as model
+from models import models 
 
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
-
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
 
-    test = model.Test(joke = 5)
+    test = models.Test(joke = 5)
     #add to db and print
     db.session.add(test)
     db.session.flush()
