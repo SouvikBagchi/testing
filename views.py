@@ -5,18 +5,16 @@ import pandas as pd
 import random
 from sqlalchemy.orm import sessionmaker
 from settings import SQLALCHEMY_DATABASE_URI
-from models import UserRating
+import models
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
-
-
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
 
-    test = UserRating(1,3,6,5)
+    test = models.UserRating(1,3,6,5)
     #add to db and print
     
     db.session.add(test)
@@ -28,7 +26,7 @@ def hello_world():
 
 
 
-    
+
     
     if request.method == 'GET':
         
