@@ -126,7 +126,7 @@ def recommend_joke():
     res = reco.get_most_popular()
     joke = res[0]
     joke_num = res[1]
-    
+
 
     
     if request.method == 'GET':
@@ -164,41 +164,61 @@ def recommend_joke():
             #append the user_pref
             #calculate svd
             
-            new_joke = 'new joke'
-            new_joke_number = random.randint(1,90)#needs to be the one that is being recommend_joke
-            
+            #first we will get the interaction matrix
+            interaction_df = reco.get_interaction()
+            #append the user_pref
+            new_df = reco.append_new_user(interaction_df, user_pref)
+
+            #calculate svd using the user_pref
+            preds_df = reco.get_svd(new_df)
+
+            #get the prediction
+
+            recommended_res = reco.recommend_joke(preds_df,user_pref)
+            joke = recommended_res[0]
+            joke_num= recommended_res[1]
+
+
+
+
             #set the sessions
             session['joke_num'] = new_joke_number
             session['user_pref'] = curr_user_pref
-            for i in curr_user_pref:
-                print(i)
-            
-            
             
             return render_template('recommended_jokes.html', joke= "recommended joke"+str(curr_user_pref))
 
         else :
             
+            #first we will get the interaction matrix
+            interaction_df = reco.get_interaction()
+
             #for that we will set a user_pref
-            user_pref = [0]*100 #create a list with the lenght of the number of jokes
+            user_pref = [0]*interaction_df.shape[1] #create a list with the length of the number of jokes
             user_pref[last_joke] = value
             session['user_pref'] = user_pref
             
-            #fetch the data
-            #create the matrix
             #append the user_pref
+            new_df = reco.append_new_user(interaction_df, user_pref)
+
             #calculate svd using the user_pref
-            #that is how you get the 
+            preds_df = reco.get_svd(new_df)
+
+            #get the prediction
+
+            recommended_res = reco.recommend_joke(preds_df,user_pref)
+            joke = recommended_res[0]
+            joke_num= recommended_res[1]
+
+
+
             
-            new_joke = 'new joke'
-            new_joke_number = random.randint(1,90)#needs to be the one that is being recommend_joke
+            new_joke = joke
+            new_joke_number = joke_num#needs to be the one that is being recommend_joke
             
             #set the sessions
             session['joke_num'] = new_joke_number
-             #[0,0,0,0,0,0,0,5,00,0,0,0,]
-            
-            #store in session
-            return render_template('recommended_jokes.html', joke= "new - joke -"+str(user_pref))
+
+            return render_template('recommended_jokes.html', joke= new_joke+" "+str(user_pref))
 
 #################### FUNCTION FOR ADDING DATA TO RDS
 
