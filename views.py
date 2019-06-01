@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
 
-
+########## DATA MODELS
 class UserRating(db.Model):
 
     """Create a data model for the database to be set up for capturing user input
@@ -68,6 +68,8 @@ class User(db.Model):
 db.create_all()
 
 
+################ ROUTES
+
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     
@@ -82,14 +84,21 @@ def hello_world():
         print('data is present')
     else:
         print('data not present')
-        boto = Boto()
-        boto.download_rating()
-        boto.download_jokes()
+        
         # #add to db and print
         a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
         db.session.add(a)
         db.session.flush()
         db.session.commit()
+
+    #For direct calculation from s3
+    boto = Boto()
+    boto.download_rating()
+    boto.download_jokes()
+
+    ##
+
+
 
     #Check if the data is already in the RDS
     #if not then get it from S3 and put it into the RDS
@@ -180,6 +189,16 @@ def recommend_joke():
             
             #store in session
             return render_template('recommended_jokes.html', joke= "new - joke -"+str(user_pref))
+
+#################### FUNCTION FOR ADDING DATA TO RDS
+
+def add_data():
+
+    #first we add the ratings data
+    rating = pd.read_csv('rating.csv')
+
+    #loop through the ratings and create UserRatingObject and add to rds
+    #commit at the end
 
 
 
