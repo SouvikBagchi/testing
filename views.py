@@ -33,22 +33,26 @@ class Test(db.Model):
         userrating_repr = "<UserRating(id='%i', user_id='%i', joke_id='%i', rating = '%i')>"
         return userrating_repr % (self.id, self.user_id, self.joke_id, self.rating)
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
 
 db.create_all()
 
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
-    test = Test(5,  8,  38)
-    
+    # test = Test(5,  8,  38)
+    admin = User(username='admin', email='admin@example.com')
     #add to db and print
-    db.session.add(test)
+    db.session.add(admin)
     db.session.flush()
-
-    if test.id :
-        db.session.commit()
-        db.session.close()
-        print('Comiited')
+    db.session.commit()
 
     # db.session.query()
 
