@@ -1,3 +1,4 @@
-class Com(Object):
+class Com:
 
 	id = 5
+	
