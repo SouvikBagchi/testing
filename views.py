@@ -64,6 +64,7 @@ db.create_all()
 def hello_world():
     
 
+    print("Homepage hit")
 
     #query the db to check if data is present 
     #if present then don't do anything
@@ -161,6 +162,9 @@ def recommend_joke():
             session.pop('user_pref',None)
             
             curr_user_pref[last_joke] = value
+
+            for i in curr_user_pref:
+                print(type(i))
             
             #fetch the data
             #create the matrix
