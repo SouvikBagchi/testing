@@ -1,6 +1,5 @@
-from flask_app import db, app
+from views import db, app
 from sqlalchemy.ext.declarative import declarative_base
-
 
 class UserRating(db.Model):
 
