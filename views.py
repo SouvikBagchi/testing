@@ -5,8 +5,7 @@ import pandas as pd
 import random
 import pymysql
 from sqlalchemy.orm import sessionmaker
-from settings import SQLALCHEMY_DATABASE_URI
-from models.models import models 
+import models 
 
 
 
