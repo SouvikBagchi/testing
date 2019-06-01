@@ -123,7 +123,9 @@ def recommend_joke():
     #create an object of recommender
     reco = Recommender(data_final, data_jokes)
     
-    joke, joke_num = reco.get_most_popular()
+    res = reco.get_most_popular()
+    joke = res[0]
+    joke_nunm = res[1]
 
     
     if request.method == 'GET':
@@ -139,7 +141,7 @@ def recommend_joke():
         #This is the value which the user gave to the previous joke which is represented by joke_num
         value = request.form["rating"]
         session.pop('rating',None)
-        
+
         #get the joke_num
         last_joke = session['joke_num']
         session.pop('joke_num',None)

@@ -24,6 +24,8 @@ class Recommender:
 	    popular_jokes.columns = ['JokeID','Number_rated10']
 	    top_joke = popular_jokes.sort_values(by=['Number_rated10']).head(1)
 	    top_joke_val = top_joke['JokeID'].values[0]
+	    jokes_list = self.data_final['JokeID'].unique().tolist()
+    	joke_num = jokes_list.index(top_joke_val)
 	    top_joke_desc = self.data_jokes[self.data_jokes['JokeID'] == top_joke_val].values[0][1]
 
-	    return top_joke_desc, top_joke_val
+	    return top_joke_desc, joke_num
