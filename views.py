@@ -16,6 +16,26 @@ app.secret_key = 'verysecretsecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
+
+
+class Test(db.Model):
+
+    """Create a data model for the database to be set up for capturing user input
+
+    """
+    __tablename__ = 'Test'
+
+    id = Column(Integer, primary_key=True)
+    joke = Column(Integer, unique=False)
+    
+    def __repr__(self):
+        userrating_repr = "<UserRating(id='%i', user_id='%i', joke_id='%i', rating = '%i')>"
+        return userrating_repr % (self.id, self.user_id, self.joke_id, self.rating)
+
+
+db.create_all()
+
+
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     test = Test(joke = 5)
@@ -116,22 +136,6 @@ def recommend_joke():
             #store in session
             return render_template('recommended_jokes.html', joke= "new - joke -"+str(user_pref))
 
-class Test(db.Model):
-
-    """Create a data model for the database to be set up for capturing user input
-
-    """
-    __tablename__ = 'Test'
-
-    id = Column(Integer, primary_key=True)
-    joke = Column(Integer, unique=False)
-    
-    def __repr__(self):
-        userrating_repr = "<UserRating(id='%i', user_id='%i', joke_id='%i', rating = '%i')>"
-        return userrating_repr % (self.id, self.user_id, self.joke_id, self.rating)
-
-
-db.create_all()
 
 
 if __name__ == "__main__":
