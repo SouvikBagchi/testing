@@ -203,9 +203,8 @@ def recommend_joke():
 
             user_pref[last_joke] = value
             print(user_pref)
-            for i in curr_user_pref:
+            for i in user_pref:
                 print(type())
-            
             
             #append the user_pref
             new_df = reco.append_new_user(interaction_df, user_pref)
@@ -219,9 +218,6 @@ def recommend_joke():
             joke = recommended_res[0]
             joke_num= recommended_res[1]
 
-
-
-            
             new_joke = joke
             new_joke_number = joke_num#needs to be the one that is being recommend_joke
             
