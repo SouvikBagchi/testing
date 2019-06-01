@@ -70,6 +70,9 @@ db.create_all()
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     
+    #query the db to check if data is present 
+    #if present then don't do anything
+    #else get data from s3 boto to put into rds
     data = User.query.all()
     # db.session.query()
     if data:
