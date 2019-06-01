@@ -9,6 +9,11 @@ from test import Com
 from settings import SQLALCHEMY_DATABASE_URI
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer
+import boto3
+
+#this is for getting data from my s3 
+import boto3
+s3_resource = boto3.resource('s3')
 
 
 app = Flask(__name__)
