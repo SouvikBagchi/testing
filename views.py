@@ -5,7 +5,7 @@ import pandas as pd
 import random
 from sqlalchemy.orm import sessionmaker
 from settings import SQLALCHEMY_DATABASE_URI
-# from models import UserRating
+from models import UserRating
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
@@ -24,6 +24,11 @@ def hello_world():
     db.session.commit()
     db.session.close()
 
+    # db.session.query()
+
+
+
+    
     
     if request.method == 'GET':
         
