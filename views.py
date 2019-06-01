@@ -96,6 +96,15 @@ def hello_world():
     boto.download_rating()
     boto.download_jokes()
 
+    #Your system now has the files - rating.csv and jokes.csv in them
+
+
+
+
+
+
+
+
     ##
     #Check if the data is already in the RDS
     #if not then get it from S3 and put it into the RDS
