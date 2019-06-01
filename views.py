@@ -206,6 +206,7 @@ def recommend_joke():
             #set the sessions
             session['joke_num'] = joke_num
             session['user_pref'] = curr_user_pref
+            session['prev_joke'] = joke
             
             return render_template('recommended_jokes.html', joke= joke)
 
