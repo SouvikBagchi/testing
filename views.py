@@ -20,6 +20,20 @@ db = SQLAlchemy(app)
 
 
 ########## DATA MODELS
+class Jokes(db.Model):
+
+    __tablename__ = 'jokesrecommended'
+
+    id = Column(Integer,primary_key=True)
+    joke = Column(String(400),unique=False)
+    rating = Column(Integer, unique= False)
+
+    def __repr__(self):
+        jokes = "<Jokes(id='%i', user_id='%i', joke='%s', rating = '%i')>"
+        return jokes % (self.id, self.user_id, self.joke, self.rating)
+
+
+
 class UserRating(db.Model):
 
     """Create a data model for the database to be set up for capturing user input
@@ -64,7 +78,7 @@ db.create_all()
 def hello_world():
     
 
-    print("Homepage hit")
+    
 
     #query the db to check if data is present 
     #if present then don't do anything
@@ -92,7 +106,6 @@ def hello_world():
         fj = open('jokes.csv','r')
     except FileNotFoundError: 
     
-        print('herr')
         boto = Boto()
         boto.download_rating()
         boto.download_jokes()
@@ -131,13 +144,12 @@ def recommend_joke():
 
     
     if request.method == 'GET':
-
-        print("GET METHOD")
         
         #we will randomly select one of the highest rated joke and display it
         #insert code to get the joke
 
         session['joke_num'] = joke_num #this is default but you will need to get the joke number you are displaying
+        session['prev_joke'] = joke
         return render_template('joke.html', joke= joke)
     
     else:
@@ -149,6 +161,15 @@ def recommend_joke():
         #get the joke_num
         last_joke = session['joke_num']
         session.pop('joke_num',None)
+
+        prev_joke = session['prev_joke']
+        session.pop('prev_joke',None)
+
+        #RDS ADD JOKE FOR FUTURE ANALYSIS
+        joke_add = Joke(joke = prev_joke,rating = value)
+
+        db.session.add(joke_add)
+        db.session.commit()
     
     
         #now that we have the joke number we will create the svd with this information
@@ -156,15 +177,11 @@ def recommend_joke():
         #check if session is set
         if 'user_pref' in session:
 
-            print("POST METHOD - user pref pres")
             curr_user_pref = list(session['user_pref'])
             
             session.pop('user_pref',None)
             
             curr_user_pref[last_joke] = int(value)
-
-
-            
             #fetch the data
             #create the matrix
             #append the user_pref
@@ -194,7 +211,6 @@ def recommend_joke():
 
         else :
 
-            print("POST METHOD - no user pref")
             
             #first we will get the interaction matrix
             interaction_df = reco.get_interaction()
@@ -225,6 +241,8 @@ def recommend_joke():
             #set the sessions
             session['joke_num'] = new_joke_number
             session['user_pref'] = user_pref
+            session['previous_joke'] = joke
+
 
             return render_template('recommended_jokes.html', joke= new_joke)
 
