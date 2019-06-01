@@ -1,15 +1,15 @@
-from flask import Flask, url_for, request, render_template, session
-from flask_sqlalchemy import SQLAlchemy
+
 import numpy as np
 import pandas as pd
 import random
 import pymysql
+from flask import Flask, url_for, request, render_template, session
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import sessionmaker
-from test import Com
 from settings import SQLALCHEMY_DATABASE_URI
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer
-
+from recommender import Recommender
 from bototest import Boto
 
 app = Flask(__name__)
@@ -53,17 +53,6 @@ class JokeDesc(db.Model):
         jokedesc_repr = "<JokeDesc(joke_id='%i', joke='%s')>"
         return jokedesc_repr % (self.joke_id, self.joke)
 
-## Test Tables
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-
-    def __repr__(self):
-        return '<User %r>' % self.username
-
-    
-
 
 db.create_all()
 
@@ -96,14 +85,8 @@ def hello_world():
     boto.download_rating()
     boto.download_jokes()
 
+
     #Your system now has the files - rating.csv and jokes.csv in them
-
-
-
-
-
-
-
 
     ##
     #Check if the data is already in the RDS
@@ -121,9 +104,15 @@ def recommend_joke():
     session - user_pref, joke_num(0-19)
     '''
     #write code to get the first joke and compute the matrix
+    #we have loaded the data
+    data_raw = pd.read_csv('ratings.csv' ,index_col = 0)
+    data_jokes = pd.read_csv('jokes.csv', index_col = 0)
+    data_final = data_raw[:100000]
+
+    #create an object of recommender
+    reco = Recommender(data_final, data_jokes)
     
-    
-    joke = 'jhkgjkhgjkg jhkg '
+    joke = reco.get_most_popular()
 
     
     if request.method == 'GET':
