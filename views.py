@@ -97,9 +97,6 @@ def hello_world():
     boto.download_jokes()
 
     ##
-
-
-
     #Check if the data is already in the RDS
     #if not then get it from S3 and put it into the RDS
 
