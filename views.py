@@ -3,14 +3,28 @@ from flask_sqlalchemy import SQLAlchemy
 import numpy as np
 import pandas as pd
 import random
+from sqlalchemy.orm import sessionmaker
+
+
+from models import UserRating
 
 app = Flask(__name__)
 app.secret_key = 'verysecretsecretkey'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@{endpoint}/{db instance name}'
 db = SQLAlchemy(app)
 
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
+
+    test = UserRating(1,3,6,5)
+    #add to db and print
+    
+    db.session.add(test)
+    
+    db.session.commit()
+    db.session.close()
+
     
     if request.method == 'GET':
         
@@ -25,7 +39,8 @@ def recommend_joke():
     #write code to get the first joke and compute the matrix
     
     
-    joke = 'first joke'
+    joke = 'jhkgjkhgjkg jhkg '
+
     
     if request.method == 'GET':
         
