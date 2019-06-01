@@ -39,7 +39,8 @@ db.create_all()
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
-    test = Test(user_id = 5, joke_id = 8,rating = 38)
+    test = Test(5,  8,  38)
+    
     #add to db and print
     db.session.add(test)
     db.session.flush()
