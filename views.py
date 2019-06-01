@@ -23,7 +23,7 @@ class Test(db.Model):
     """Create a data model for the database to be set up for capturing user input
 
     """
-    
+
     __tablename__ = 'Test'
 
     id = db.Column(Integer, primary_key=True)
@@ -39,7 +39,7 @@ db.create_all()
 
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
-    test = Test()
+    test = Test(user_id = 5, joke_id = 8,rating = 38)
     #add to db and print
     db.session.add(test)
     db.session.flush()
