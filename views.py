@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import numpy as np
 import pandas as pd
 import random
+import pymysql
 from sqlalchemy.orm import sessionmaker
 from settings import SQLALCHEMY_DATABASE_URI
 import models
