@@ -71,12 +71,14 @@ db.create_all()
 def hello_world():
     
     # #add to db and print
-    # db.session.add(admin)
-    # db.session.flush()
-    # db.session.commit()
+    a = User(username = 'asdfa',email ='asdfsa@sdfs.com')
+    db.session.add(admin)
+    db.session.flush()
+    db.session.commit()
 
     #Check if the data is already in the RDS
     #if not then get it from S3 and put it into the RDS
+
     data = User.query.all()
     # db.session.query()
     if data:
