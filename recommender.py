@@ -53,6 +53,9 @@ class Recommender:
 		new_matrix = new_df.as_matrix()
 		print("NEW MATRIX")
 		print(type(new_matrix))
+		for row in new_matrix:
+			for val in row:
+				print(type(val))
 		#get the mean score of users
 		# mean_score = np.mean(new_matrix,axis = 1)
 		# new_matrix_dm = new_matrix - mean_score.reshape(-1,1)
