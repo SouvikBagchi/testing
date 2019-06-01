@@ -204,13 +204,15 @@ def recommend_joke():
             user_pref[last_joke] = value
             print(user_pref)
             for i in user_pref:
-                print(type())
+                print(type(i))
             
             #append the user_pref
             new_df = reco.append_new_user(interaction_df, user_pref)
 
             #calculate svd using the user_pref
             preds_df = reco.get_svd(new_df)
+
+
 
             #get the prediction
 
