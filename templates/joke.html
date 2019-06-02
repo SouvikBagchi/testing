@@ -16,6 +16,18 @@
         Click on the button below to continue!
         
     </h2>
+    
+    <div class="slidecontainer">
+
+  <form method="POST" action="{{ url_for('recommend_joke') }}">
+            <input class = "slider" type="range" min="-10" max="10" name="rating"
+                   value = "0"/>
+            
+      <button class="button"  type="submit" value="submit" onclick="">Next Joke</button>
+    
+        </form>
+    </div>
+    
     <style>
         body{
             
@@ -60,17 +72,8 @@
         .button:hover {
         background-color: purple;
         }
-    </style>
-        <form method="POST" action="{{ url_for('recommend_joke') }}">
-            <input class = "slider" type="range" min="-10" max="10" name="rating"
-                   value = "0"/>
-            
-      
-      <button class="button"  type="submit" value="submit" onclick="">Next Joke</button>
     
-        </form>
-    
-    <style>
+        
         .slidecontainer {
         width: 50%;
         margin-left: auto !important;
