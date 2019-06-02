@@ -7,19 +7,47 @@
     
     <h1>Joke for you</h1>
     <h2>
-        This will hold the joke - 
         
         {{ joke }}
         
         <br>
         <br>
         
-        Click on the button below to continue !
+        Click on the button below to continue!
         
     </h2>
     <style>
+        body{
+            
+            text-align:center;
+            background-image:url('img2.jpg');
+            background-image: -webkit-linear-gradient(rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5)), url('img4.jpg');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('img4.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        
+        h1{
+            color: lightcoral;
+            font-family:serif;
+            font-style:italic;
+            font-weight: 50;
+            font-size:52px;
+            
+        }
+        
+        h2{
+            color: purple;
+            font-family: serif;
+            font-weight: 50;
+            font-size:24px;
+            
+        }
         .button {
-        background-color: #4CAF50;
+        background-color: rgba(217, 130, 217, 0.76);
         border: none;
         color: white;
         padding: 15px 25px;
@@ -29,7 +57,7 @@
         }
 
         .button:hover {
-        background-color: green;
+        background-color: purple;
         }
     </style>
         <form method="POST" action="{{ url_for('recommend_joke') }}">
@@ -37,7 +65,7 @@
                    value = "0"/>
             
       
-      <button class="button"  type="submit" value="submit" onclick="">Go ahead !</button>
+      <button class="button"  type="submit" value="submit" onclick="">Next Joke</button>
     
         </form>
     
@@ -59,6 +87,7 @@
 
         .slider:hover {
         opacity: 1;
+        
         }
 
         .slider::-webkit-slider-thumb {
@@ -66,14 +95,14 @@
         appearance: none;
         width: 25px;
         height: 25px;
-        background: #4CAF50;
+        background: rgba(217, 130, 217, 0.76);
         cursor: pointer;
         }
 
         .slider::-moz-range-thumb {
         width: 25px;
         height: 25px;
-        background: #4CAF50;
+        background: rgba(217, 130, 217, 0.76);
         cursor: pointer;
         }
     </style>
