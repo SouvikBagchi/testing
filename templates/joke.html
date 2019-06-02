@@ -10,23 +10,29 @@
         
         {{ joke }}
         
+     </h2>
+    
+    <h3> 
         <br>
-        <br>
+        Rate the joke on the slider below:
+    </h3>
         
-        Click on the button below to continue!
-        
-    </h2>
     
     <div class="slidecontainer">
 
   <form method="POST" action="{{ url_for('recommend_joke') }}">
             <input class = "slider" type="range" min="-10" max="10" name="rating"
                    value = "0"/>
+      <h3> 
+        <br>
+        Click on the button below for your next joke!
+    </h3>
             
       <button class="button"  type="submit" value="submit" onclick="">Next Joke</button>
     
         </form>
     </div>
+    
     
     <style>
         body{
@@ -57,6 +63,15 @@
             font-family: serif;
             font-weight: 50;
             font-size:24px;
+            
+        }
+        
+        h3{
+            color: lightcoral;
+            font-family: serif;
+            font-style:italic;
+            font-weight: 50;
+            font-size:20px;
             
         }
         .button {

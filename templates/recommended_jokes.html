@@ -9,13 +9,13 @@
     <h2>
         
         {{ joke }}
-        
-        <br>
-        <br>
-        
-        Click on the button below to continue !
-        
     </h2>
+    
+    <h3> 
+        <br>
+        Rate the joke on the slider below:
+    </h3>
+        
           
     <div class="slidecontainer">
 
@@ -23,6 +23,11 @@
             <input class = "slider" type="range" min="-10" max="10" name="rating"
                    value = "0"/>
             
+      <h3> 
+        <br>
+        Click on the button below for your next joke!
+    </h3>
+      
       <button class="button"  type="submit" value="submit" onclick="">Next Joke</button>
     
         </form>
@@ -58,6 +63,16 @@
             font-size:24px;
             
         }
+        
+        h3{
+            color: lightcoral;
+            font-family: serif;
+            font-style:italic;
+            font-weight: 50;
+            font-size:20px;
+            
+        }
+        
         .button {
         background-color: rgba(217, 130, 217, 0.76);
         border: none;
